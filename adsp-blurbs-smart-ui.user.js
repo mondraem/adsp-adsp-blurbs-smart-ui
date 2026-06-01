@@ -1,10 +1,13 @@
 // ==UserScript==
 // @name         ADSP Blurbs Smart UI
-// @namespace    adsp-blurbs
+// @namespace    https://github.com/mondraem
 // @version      1.0.0
 // @description  QA Bonus blurbs automation
+// @author       Emmanuel Mondragon | mondraem
 // @match        https://issues.amazon.com/issues/*
 // @grant        none
+// @downloadURL  https://raw.githubusercontent.com/mondraem/adsp-adsp-blurbs-smart-ui/main/adsp-blurbs-smart-ui.user.js
+// @updateURL    https://raw.githubusercontent.com/mondraem/adsp-adsp-blurbs-smart-ui/main/adsp-blurbs-smart-ui.user.js
 // ==/UserScript==
 
 (function() {
