@@ -1,5 +1,8 @@
 // ==UserScript==
 // @name         ADSP Blurbs Smart UI
+// @namespace    adsp-blurbs
+// @version      1.0.0
+// @description  QA Bonus blurbs automation
 // @match        https://issues.amazon.com/issues/*
 // @grant        none
 // ==/UserScript==
