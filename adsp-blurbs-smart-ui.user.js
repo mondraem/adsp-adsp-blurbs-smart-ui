@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ADSP Blurbs Smart UI
 // @namespace    https://github.com/mondraem
-// @version      1.1.0
+// @version      1.0.0
 // @description  QA Bonus blurbs automation
 // @author       Emmanuel Mondragon | mondraem
 // @match        https://issues.amazon.com/issues/*
@@ -20,8 +20,14 @@
         if (myName) localStorage.setItem("adsp_my_name", myName);
     }
 
+    // 🔹 My Amazon user
+    let myUser = localStorage.getItem("adsp_my_user");
+    if (!myUser) {
+        myUser = prompt("Enter your Amazon user:");
+        if (myUser) localStorage.setItem("adsp_my_user", myUser);
+    }
 
-    //  Get ticket creator username
+    // 🔍 Get ticket creator username
     const getTicketUser = () => {
     const elements = document.querySelectorAll('.editable-field-display-text');
 
@@ -43,7 +49,7 @@
     return null;
 };
 
-    //  Get Approved AV budget
+    // 💰 Get Approved AV budget
     const getApprovedBudget = () => {
         const allElements = document.querySelectorAll('*');
 
@@ -74,7 +80,7 @@
         return "Not found";
     };
 
-    // Get Advertiser Name
+    // 🏷️ Get Advertiser Name
     const getAdvertiserName = () => {
         const allElements = document.querySelectorAll('*');
 
@@ -135,7 +141,7 @@
 
 
 
-    //  Copy blurb
+    // 📋 Copy blurb
     const copyBlurb = (text) => {
         let ticketUser = getTicketUser();
         let approvedBudget = getApprovedBudget();
@@ -169,7 +175,7 @@
         navigator.clipboard.writeText(finalText);
     };
 
-    // Create UI
+    // 🎨 Create UI
     const createUI = () => {
         if (document.getElementById('adsp-panel')) return;
 
@@ -199,7 +205,7 @@
                 font-weight:500;
                 padding:2px;
             ">
-                Blurbs 
+                Blurbs ✨
             </div>
             <div id="content" style="margin-top:6px;"></div>
         `;
@@ -512,7 +518,7 @@ Associate Name`);
 
 
 
-        //  Change name
+        // ✏️ Change name
         const nameBtn = document.createElement('button');
         nameBtn.innerText = "Change name ✏️";
         nameBtn.style.width = '100%';
@@ -532,14 +538,31 @@ Associate Name`);
 
         content.appendChild(nameBtn);
 
+        // 👤 Change user
+        const userBtn = document.createElement('button');
+        userBtn.innerText = "Change Amazon user 👤";
+        userBtn.style.width = '100%';
+        userBtn.style.border = '1px solid #ccc';
+        userBtn.style.borderRadius = '4px';
+        userBtn.style.background = '#fff';
+        userBtn.style.marginTop = '6px';
+
+        userBtn.onclick = () => {
+            const newUser = prompt("Enter new user:");
+            if (newUser) {
+                localStorage.setItem("adsp_my_user", newUser);
+                myUser = newUser;
+                alert("User updated ✅");
+            }
+        };
 
         content.appendChild(userBtn);
         panel.style.width = '70px';
 
-        //  Toggle
+        // 🔘 Toggle
        let minimized = true;
 
-        
+        // 🔥 FORZAR estado inicial SIEMPRE minimizado
         panel.style.width = '70px';
         content.style.display = 'none';
 
@@ -558,14 +581,15 @@ Associate Name`);
         };
     };
 
-    // Visibility control
+    // 🧠 Visibility control
     const controlVisibility = () => {
         const panel = document.getElementById('adsp-panel');
         if (!panel) return;
-    
+
         const isOverview = document.body.innerText.toLowerCase().includes("overview");
-    
-        panel.style.display = isOverview ? 'block' : 'none';
+        const isAssigned = document.body.innerText.toLowerCase().includes(myUser.toLowerCase());
+
+        panel.style.display = (isOverview && isAssigned) ? 'block' : 'none';
     };
 
     setInterval(() => {
