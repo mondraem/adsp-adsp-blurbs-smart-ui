@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ADSP Blurbs Smart UI
 // @namespace    https://github.com/mondraem
-// @version      1.1.2
+// @version      1.1.3
 // @description  QA Bonus blurbs automation
 // @author       Emmanuel Mondragon | mondraem
 // @match        https://issues.amazon.com/issues/*
@@ -231,25 +231,38 @@
         const content = document.getElementById('content');
 
         // 🔹 Create button
-        const createButton = (title, text) => {
-            const btn = document.createElement('button');
-
-            btn.innerText = title;
-            btn.style.width = '100%';
-            btn.style.marginBottom = '6px';
-            btn.style.padding = '6px';
-            btn.style.border = '1px solid #ccc';
-            btn.style.borderRadius = '4px';
-            btn.style.background = '#fff';
-            btn.style.cursor = 'pointer';
-
-            btn.onmouseover = () => btn.style.background = '#f2f2f2';
-            btn.onmouseout = () => btn.style.background = '#fff';
-
-            btn.onclick = () => copyBlurb(text);
-
-            content.appendChild(btn);
+    const createButton = (title, text) => {
+        const btn = document.createElement('button');
+    
+        btn.innerText = title;
+        btn.style.width = '100%';
+        btn.style.marginBottom = '6px';
+        btn.style.padding = '6px';
+        btn.style.border = '1px solid #ccc';
+        btn.style.borderRadius = '4px';
+        btn.style.background = '#fff';
+        btn.style.cursor = 'pointer';
+    
+        btn.onmouseover = () => btn.style.background = '#f2f2f2';
+        btn.onmouseout = () => btn.style.background = '#fff';
+    
+        btn.onclick = () => {
+            copyBlurb(text);
+    
+            const originalText = btn.innerText;
+            const originalBg = btn.style.background;
+    
+            btn.innerText = 'Blurb copied to clipboard✅';
+            btn.style.background = '#d4edda';
+    
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.style.background = originalBg;
+            }, 1500);
         };
+    
+        content.appendChild(btn);
+    };
 
 
 
