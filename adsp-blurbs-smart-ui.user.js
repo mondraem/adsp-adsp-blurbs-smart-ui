@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ADSP Blurbs Smart UI
 // @namespace    https://github.com/mondraem
-// @version      1.1.3
+// @version      1.1.4
 // @description  QA Bonus blurbs automation
 // @author       Emmanuel Mondragon | mondraem
 // @match        https://issues.amazon.com/issues/*
@@ -231,7 +231,7 @@
         const content = document.getElementById('content');
 
         // 🔹 Create button
-    const createButton = (title, text) => {
+        const createButton = (title, text) => {
         const btn = document.createElement('button');
     
         btn.innerText = title;
@@ -251,19 +251,21 @@
     
             const originalText = btn.innerText;
             const originalBg = btn.style.background;
+            const originalBorder = btn.style.border;
     
             btn.innerText = 'Blurb copied to clipboard✅';
-            btn.style.background = '#d4edda';
+            btn.style.background = '#dcfce7';
+            btn.style.border = '1px solid #22c55e';
     
             setTimeout(() => {
                 btn.innerText = originalText;
                 btn.style.background = originalBg;
+                btn.style.border = originalBorder;
             }, 1500);
         };
     
         content.appendChild(btn);
     };
-
 
 
 
