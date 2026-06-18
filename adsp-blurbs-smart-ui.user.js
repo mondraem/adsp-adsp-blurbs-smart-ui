@@ -348,6 +348,16 @@ Please reopen the ticket after updating the information.
 
 Best,
 Associate Name`);
+        
+          createButton("Finance approval link missing", `"Hi @
+Hope you're doing well
+
+Please provide the finance approval link or any documentation that proves this order is finance approved.
+Reopen the ticket once you have this information.
+
+Regards,
+Associate Name"
+`);
 
         createButton("IMDb Display Line", `Hi @,
 
