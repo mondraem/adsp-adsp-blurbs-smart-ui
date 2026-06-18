@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ADSP Blurbs Smart UI
 // @namespace    https://github.com/mondraem
-// @version      1.0.0
+// @version      1.1.1
 // @description  QA Bonus blurbs automation
 // @author       Emmanuel Mondragon | mondraem
 // @match        https://issues.amazon.com/issues/*
