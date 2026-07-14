@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ADSP Blurbs Smart UI
 // @namespace    https://github.com/mondraem
-// @version      1.2.1
+// @version      1.2.2
 // @description  QA Bonus blurbs automation - reads blurbs from a shared Excel file
 // @author       Emmanuel Mondragon | mondraem
 // @match        https://issues.amazon.com/issues/*
@@ -384,5 +384,3 @@ const fetchBlurbsFromExcel = () => {
     setInterval(() => {
         createUI();
     }, 1000);
-
-})();
